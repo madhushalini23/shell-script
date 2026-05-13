@@ -4,3 +4,5 @@
 
 echo "Hello, World!"
 echo "hi there"
+echo "This is a bash script."
+
