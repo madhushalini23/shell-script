@@ -28,3 +28,15 @@ then
     echo "ERROR:: you must have sudo access to execute this script"
     exit 1
 fi
+
+for package in $@
+do
+DNF LIST INSTALLED $package &>>$LOG_FILE_NAME
+if [ $? -ne 0 ]
+then
+    dnf install $package -y &>>$LOG_FILE_NAME
+    VALIDATE $? "installing $package"
+else
+    echo -e "$package is already $Y ... installed $N"
+    fi
+done
