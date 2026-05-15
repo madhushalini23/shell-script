@@ -19,7 +19,7 @@ VALIDATE(){
     fi
 }
 
-echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE
 
 if [ $USERID -ne 0 ]
 then
@@ -27,10 +27,10 @@ then
     exit 1
 fi
 
-dnf list installed mysql &>>$LOG_FILE_NAME
+dnf list installed mysql &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
-    dnf install mysql -y &>>$LOG_FILE_NAME
+    dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? "installing mysql"
 else
     echo -e "mysql is already... $Y installed"
