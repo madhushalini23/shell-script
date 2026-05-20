@@ -24,7 +24,7 @@ VALIDATE(){
 }
 
 CHECK_ROOT(){
-    IF [ $USERID -ne 0 ]
+    if [ $USERID -ne 0 ]
     then
         echo "ERROR:: you must have sudo access to execute this script"
         exit 1
@@ -33,5 +33,5 @@ CHECK_ROOT(){
 
 echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
-FILES_TO_DELETE=(find $SOURCE_DIR -name "*.log" -mtime +14)
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
 echo "files to be deleted: $FILES_TO_DELETE"
